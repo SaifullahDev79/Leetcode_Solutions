@@ -1,0 +1,38 @@
+
+
+//https://leetcode.com/problems/find-numbers-with-even-number-of-digits/
+
+
+class Solution {
+    public int findNumbers(int[] nums) {
+         int counter = 0;
+    for(int i =0 ; i<nums.length ; i++){
+        if(checkEven(nums[i])){
+            counter ++;
+        }
+    }
+    return counter;
+}
+
+boolean checkEven(int count){
+    int numberofdigits = counting(count);
+
+    return numberofdigits % 2 == 0;
+}
+int counting(int num){
+    if (num < 0){
+        num = num * -1;
+    }
+    if (num == 0){
+        return 1;
+    }
+        
+    
+    int count =0;
+    while (num > 0){
+    count ++;
+    num = num/10;
+    }
+    return count;
+}
+}

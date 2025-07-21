@@ -1,0 +1,33 @@
+
+//https://leetcode.com/problems/missing-number/
+
+
+
+class Solution {
+    public int missingNumber(int[] nums) {
+        int i = 0;
+
+        while (i < nums.length) {
+            int element = nums[i];
+            if (element < nums.length && nums[i] != nums[element]) {
+                swap(nums, i, element);
+            } else {
+                i++;
+            }
+        }
+
+        for (int k = 0; k < nums.length; k++) {
+            if (nums[k] != k) {
+                return k;
+            }
+        }
+
+        return nums.length;
+    }
+
+    void swap(int[] arr, int a, int b) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+}

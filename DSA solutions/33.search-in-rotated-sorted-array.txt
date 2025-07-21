@@ -1,0 +1,65 @@
+//https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+
+
+
+class Solution {
+    public int search(int[] nums, int target) {
+		
+		
+		int pivot = PeakElement(nums);
+		
+		if(pivot == -1) {
+			return binarySearch(nums, 0, nums.length-1,target );
+		}
+		if(nums[pivot]== target) {
+			return pivot;
+		}
+		if(nums[0]<=target) {
+			return binarySearch(nums, 0, pivot-1, target);
+		}
+		return binarySearch(nums, pivot+1 , nums.length-1, target);
+	}
+	
+	int binarySearch (int [] array, int start, int end, int target) {
+	
+		
+		while (start <= end) {
+			int mid = start + ( end - start)/2;
+			
+			if(array[mid]> target) {
+				end = mid-1;
+			}
+			if(array[mid]< target) {
+				start= mid +1;
+			}
+			if(array[mid] == target) {
+				return mid;
+			}
+		}
+		return -1;
+	}
+	
+	
+	 int PeakElement(int[]array) {
+		int start = 0;
+		int end = array.length-1;
+		
+		while(start <= end) {
+			int mid = start + (end - start)/2;
+			if(mid < end && array[mid]> array[mid+1] ) {
+				return mid;
+			}
+			if (mid > start && array[mid] < array[mid-1] ) {
+				return mid-1;
+			}
+			if(array[start] >= array[mid]) {
+				end = mid-1;
+			}
+			else {
+				start= mid +1;
+			}
+		}
+		return -1;
+	} 
+}
