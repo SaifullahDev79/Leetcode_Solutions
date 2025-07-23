@@ -1,0 +1,6 @@
+--https://leetcode.com/problems/find-customer-referee/submissions/1707997167/
+
+
+Select name
+ from Customer 
+ Where referee_id <> 2 Or referee_id is null;

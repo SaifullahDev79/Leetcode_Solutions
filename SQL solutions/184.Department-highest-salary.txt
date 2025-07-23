@@ -1,0 +1,9 @@
+https://leetcode.com/problems/department-highest-salary/
+
+
+Select d.name AS Department, w.name As Employee , w.salary As Salary from
+( Select *, Dense_Rank() over (partition by departmentId order by salary desc) as rnk 
+from Employee e) AS w
+        Join Department d
+         ON w.departmentId = d.id
+         where w.rnk =1;

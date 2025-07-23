@@ -1,0 +1,9 @@
+--https://leetcode.com/problems/triangle-judgement/submissions/1708135233/
+
+Select x,y,z,
+Case 
+    When (x+y >z) And (x+z >y) And (y+z >x) then 'Yes'
+    else 'No'
+    End As triangle
+
+from Triangle 
